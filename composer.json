@@ -9,9 +9,14 @@
         }
     ],
     "require": {
-        "php": "^7.2 || ^8.0"
+        "php": "^7.2 || ^8.0",
+        "psr/cache": "^2.0",
+        "ray/di": "^2.12",
+        "symfony/cache": "^5.3",
+        "bear/app-meta": "^1.7"
     },
     "require-dev": {
+        "ext-redis": "*",
         "bamarni/composer-bin-plugin": "^1.4",
         "phpunit/phpunit": "^9.5"
     },
@@ -26,7 +31,8 @@
                 "tests/",
                 "tests/Fake"
             ]
-        }
+        },
+        "files": ["src-files/apcu.php"]
     },
     "scripts": {
         "setup": "php bin/setup.php",
