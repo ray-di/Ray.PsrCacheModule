@@ -1,5 +1,5 @@
 {
-    "name": "b-e-a-r/psr-cache",
+    "name": "ray/psr-cache-module",
     "description": "",
     "license": "MIT",
     "authors": [
@@ -12,8 +12,7 @@
         "php": "^7.2 || ^8.0",
         "psr/cache": "^2.0",
         "ray/di": "^2.12",
-        "symfony/cache": "^5.3",
-        "bear/app-meta": "^1.7"
+        "symfony/cache": "^5.3"
     },
     "require-dev": {
         "ext-redis": "*",
@@ -22,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BEAR\\PsrCache\\": "src/"
+            "Ray\\PsrCacheModule\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BEAR\\PsrCache\\": [
+            "Ray\\PsrCacheModule\\": [
                 "tests/",
                 "tests/Fake"
             ]

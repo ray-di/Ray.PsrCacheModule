@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BEAR\PsrCache;
+namespace Ray\PsrCacheModule;
 
-use BEAR\PsrCache\Annotation\Shared;
+use Ray\PsrCacheModule\Annotation\Shared;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\AbstractModule;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;

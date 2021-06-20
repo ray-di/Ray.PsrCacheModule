@@ -1,4 +1,3 @@
-# BEAR.PsrCache
+# Ray.PsrCacheModule
 
-PSR-6 Cache Interface module.
-(Replacement for deprecated doctirne cache)
+PSR-6 Cache Module for Ray.Di

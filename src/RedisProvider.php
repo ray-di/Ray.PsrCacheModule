@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BEAR\PsrCache;
+namespace Ray\PsrCacheModule;
 
-use BEAR\PsrCache\Annotation\RedisConfig;
-use BEAR\PsrCache\Exception\RedisConnectionException;
+use Ray\PsrCacheModule\Annotation\RedisConfig;
+use Ray\PsrCacheModule\Exception\RedisConnectionException;
 use Ray\Di\ProviderInterface;
 use Redis;
 use RedisException;

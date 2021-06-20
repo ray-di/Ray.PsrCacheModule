@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BEAR\PsrCache\Annotation;
+namespace Ray\PsrCacheModule\Annotation;
 
 use Attribute;
 use Ray\Di\Di\Qualifier;
@@ -12,6 +12,6 @@ use Ray\Di\Di\Qualifier;
  * @Qualifier()
  */
 #[Attribute, Qualifier]
-final class CacheNameSpace
+final class CacheNamespace
 {
 }

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BEAR\PsrCache;
+namespace Ray\PsrCacheModule;
 
-use BEAR\PsrCache\Annotation\CacheNameSpace;
-use BEAR\PsrCache\Annotation\RedisConfig;
-use BEAR\PsrCache\Annotation\RedisInstance;
-use BEAR\PsrCache\Annotation\Shared;
+use Ray\PsrCacheModule\Annotation\CacheNamespace;
+use Ray\PsrCacheModule\Annotation\RedisConfig;
+use Ray\PsrCacheModule\Annotation\RedisInstance;
+use Ray\PsrCacheModule\Annotation\Shared;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\AbstractModule;
 use Ray\Di\Scope;
@@ -29,11 +29,11 @@ final class RedisCacheModule extends AbstractModule
     protected function configure(): void
     {
         $this->bind(CacheItemPoolInterface::class)->toConstructor(ApcuAdapter::class, [
-            'namespace' => CacheNameSpace::class,
+            'namespace' => CacheNamespace::class,
         ]);
         $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(RedisAdapter::class, [
             'redisClient' => RedisInstance::class,
-            'namespace' => CacheNameSpace::class,
+            'namespace' => CacheNamespace::class,
         ])->in(Scope::SINGLETON);
         $this->bind()->annotatedWith(RedisConfig::class)->toInstance($this->server);
         $this->bind('')->annotatedWith(RedisInstance::class)->toProvider(RedisProvider::class);
