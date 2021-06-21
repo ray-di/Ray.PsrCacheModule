@@ -11,8 +11,9 @@
     "require": {
         "php": "^7.3 || ^8.0",
         "psr/cache": "^1.0.1",
-        "ray/di": "^2.12",
-        "symfony/cache": "^5.3"
+        "ray/di": "^2.12.0",
+        "symfony/cache": "^5.3",
+        "doctrine/annotations": "^1.13"
     },
     "require-dev": {
         "ext-redis": "*",
