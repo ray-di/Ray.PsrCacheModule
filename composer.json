@@ -29,7 +29,8 @@
         "psr-4": {
             "Ray\\PsrCacheModule\\": [
                 "tests/",
-                "tests/Fake"
+                "tests/Fake",
+                "tests-php8/Fake"
             ]
         },
         "files": ["src-files/apcu.php"]
