@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\AbstractModule;
 use Ray\Di\Injector;
+use Ray\PsrCacheModule\Annotation\CacheDir;
 use Ray\PsrCacheModule\Annotation\Local;
 use Ray\PsrCacheModule\Annotation\Shared;
 
@@ -31,5 +32,12 @@ class PsrCacheTest extends TestCase
         $module = new CacheNamespaceModule('1', new RedisCacheModule(['localhost', 6379]));
         $cache = (new Injector($module))->getInstance(CacheItemPoolInterface::class, Shared::class);
         $this->assertInstanceOf(CacheItemPoolInterface::class, $cache);
+    }
+
+    public function testCacheDirModule(): void
+    {
+        $module = new CacheDirModule('/tmp');
+        $cacheDir = (new Injector($module))->getInstance('', CacheDir::class);
+        $this->assertSame('/tmp', $cacheDir);
     }
 }
