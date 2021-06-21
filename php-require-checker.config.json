@@ -1,0 +1,6 @@
+{
+  "symbol-whitelist": [
+    "array", "null", "parent", "string", "void",
+    "Redis"
+  ]
+}
