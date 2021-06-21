@@ -7,7 +7,7 @@ namespace Ray\PsrCacheModule\Annotation;
 use Attribute;
 
 /** @Annotation */
-#[Attribute]
+#[Attribute(Attribute::TARGET_PARAMETER | Attribute::TARGET_METHOD)]
 final class Shared
 {
 }
