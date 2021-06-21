@@ -8,6 +8,7 @@ use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\RedisConfig;
 use Ray\PsrCacheModule\Exception\RedisConnectionException;
 use Redis;
+
 use function sprintf;
 
 class RedisProvider implements ProviderInterface
