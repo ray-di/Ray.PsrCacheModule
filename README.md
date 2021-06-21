@@ -45,7 +45,12 @@ class Foo
     }
 }
 ```
-## Supported Cache Module
+
+## Installation
+
+    composer require ray/psr-cache-module
+
+## Module install
 
 ### ArrayCacheModule
 
@@ -71,19 +76,6 @@ This module is for a single web server.
 use Ray\PsrCacheModule\ApcuCacheModule;
 
 new ApcuCacheModule();
-```
-
-### ApcuCacheModule
-
-This module is for a single web server.
-
-* Local: Chain(APC, File)
-* Shared: Chain(APC, File)
-
-```php
-use Ray\PsrCacheModule\ArrayCacheModule;
-
-new ArrayCacheModule();
 ```
 
 ### RedisCacheModule
