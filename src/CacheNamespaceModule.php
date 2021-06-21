@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
-use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Ray\Di\AbstractModule;
+use Ray\PsrCacheModule\Annotation\CacheNamespace;
 
 final class CacheNamespaceModule extends AbstractModule
 {

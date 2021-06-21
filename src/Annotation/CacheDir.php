@@ -14,7 +14,7 @@ use Ray\Di\Di\Qualifier;
  * @NamedArgumentConstructor
  */
 #[Attribute, Qualifier]
-final class CacheNamespace
+final class CacheDir
 {
     /** @var string */
     public $value;

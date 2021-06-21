@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
+use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\RedisConfig;
 use Ray\PsrCacheModule\Exception\RedisConnectionException;
-use Ray\Di\ProviderInterface;
 use Redis;
-use RedisException;
 
 use function sprintf;
 
@@ -38,11 +37,10 @@ class RedisProvider implements ProviderInterface
     public function get()
     {
         $redis = new Redis();
-        try {
-            $redis->connect($this->host, $this->port);
+        $connected = $redis->connect($this->host, $this->port);
+        if (! $connected) {
             // @codeCoverageIgnoreStart
-        } catch (RedisException $e) {
-            throw new RedisConnectionException(sprintf('%s/%s', $this->host, $this->port), 0, $e);
+            throw new RedisConnectionException(sprintf('%s/%s', $this->host, $this->port));
             // @codeCoverageIgnoreStart
         }
 

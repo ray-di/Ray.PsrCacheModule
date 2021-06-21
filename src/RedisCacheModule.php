@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
-use Ray\PsrCacheModule\Annotation\CacheNamespace;
-use Ray\PsrCacheModule\Annotation\RedisConfig;
-use Ray\PsrCacheModule\Annotation\RedisInstance;
-use Ray\PsrCacheModule\Annotation\Shared;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\AbstractModule;
 use Ray\Di\Scope;
-use Symfony\Component\Cache\Adapter\ApcuAdapter;
+use Ray\PsrCacheModule\Annotation\CacheNamespace;
+use Ray\PsrCacheModule\Annotation\Local;
+use Ray\PsrCacheModule\Annotation\RedisConfig;
+use Ray\PsrCacheModule\Annotation\RedisInstance;
+use Ray\PsrCacheModule\Annotation\Shared;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
 
 final class RedisCacheModule extends AbstractModule
@@ -28,9 +28,7 @@ final class RedisCacheModule extends AbstractModule
 
     protected function configure(): void
     {
-        $this->bind(CacheItemPoolInterface::class)->toConstructor(ApcuAdapter::class, [
-            'namespace' => CacheNamespace::class,
-        ]);
+        $this->bind(CacheItemPoolInterface::class)->annotatedWith(Local::class)->toProvider(LocalCacheProvider::class)->in(Scope::SINGLETON);
         $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(RedisAdapter::class, [
             'redisClient' => RedisInstance::class,
             'namespace' => CacheNamespace::class,
