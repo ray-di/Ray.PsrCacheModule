@@ -1,6 +1,6 @@
 # Ray.PsrCacheModule
 
-This package is the Ray.Di module that performs the PSR-6 interface binding.
+This package is the Ray.Di module that performs the [PSR-6](https://www.php-fig.org/psr/psr-6/) / [PSR-16](https://www.php-fig.org/psr/psr-16/) interface binding.
 
 You can use the PSR6 cache interface in two ways: `Local` and `Public`.
 `Local` is for caches that do not need to be shared among multiple web servers, and `Public` is for caches that need to be shared.
@@ -46,13 +46,34 @@ class Foo
 }
 ```
 
+Create object graph
+
+```php
+use Ray\Di\AbstractModule;
+use Ray\Di\Injector;
+use Ray\PsrCacheModule\Psr16CacheModule;
+use Ray\PsrCacheModule\Psr6ArrayModule;
+
+$foo = (new Injector(new class extends AbstractModule {
+    protected function configure()
+    {
+        $this->install(new Psr6ArrayModule()); // PSR-6 
+        // $this->install(new Psr16CacheModule()); // PSR-16
+    }
+}))->getInstance(Foo::class);
+
+assert($foo instanceof Foo);
+````
+
 ## Installation
 
     composer require ray/psr-cache-module
 
 ## Module install
 
-### ArrayCacheModule
+## PSR-6
+
+### Psr6ArrayModule
 
 This module is for development.
 
@@ -60,12 +81,12 @@ This module is for development.
 * Shared: Array
 
 ```php
-use Ray\PsrCacheModule\ArrayCacheModule;
+use Ray\PsrCacheModule\Psr6ArrayModule;
 
-new ArrayCacheModule();
+new Psr6ArrayModule();
 ```
 
-### ApcuCacheModule
+### Psr6ApcuModule
 
 This module is for a single web server.
 
@@ -73,12 +94,12 @@ This module is for a single web server.
 * Shared: Chain(APC, File)
 
 ```php
-use Ray\PsrCacheModule\ApcuCacheModule;
+use Ray\PsrCacheModule\Psr6ApcuModule;
 
-new ApcuCacheModule();
+new Psr6ApcuModule();
 ```
 
-### RedisCacheModule
+### Psr6RedisModule
 
 This module is for multiple web servers.
 
@@ -86,11 +107,21 @@ This module is for multiple web servers.
 * Shared: Redis
 
 ```php
-use Ray\PsrCacheModule\RedisCacheModule;
+use Ray\PsrCacheModule\Psr6RedisModule;
 
-new RedisCacheModule(['localhost', '6379']);
+new Psr6RedisModule(['localhost', '6379']);
 ```
 
+## PSR-16
+
+If you install Psr16CacheModule, the cache engine installed with Psr6*Module can be used with PSR-16 interface.
+PSR-16 bindings use PSR-6 bindings.
+
+```php
+use Ray\PsrCacheModule\Psr16CacheModule;
+
+new Psr16CacheModule();
+```
 ## Common Configuration Module
 
 ### CacheDirModule
