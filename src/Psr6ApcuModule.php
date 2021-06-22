@@ -10,7 +10,7 @@ use Ray\Di\Scope;
 use Ray\PsrCacheModule\Annotation\Local;
 use Ray\PsrCacheModule\Annotation\Shared;
 
-final class ApcuCacheModule extends AbstractModule
+final class Psr6ApcuModule extends AbstractModule
 {
     protected function configure(): void
     {

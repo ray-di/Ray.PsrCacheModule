@@ -14,7 +14,7 @@ class Psr16CacheTest extends TestCase
 {
     public function testPsr16CacheModule(): void
     {
-        $module = new Psr16CacheModule(new ArrayCacheModule());
+        $module = new Psr16CacheModule(new Psr6ArrayModule());
         $this->assertInstanceOf(AbstractModule::class, $module);
         $cache = (new Injector($module))->getInstance(CacheInterface::class, Local::class);
         $this->assertInstanceOf(CacheInterface::class, $cache);

@@ -11,7 +11,7 @@ class Php8PsrCacheTest extends TestCase
 {
     public function testConstructorPropertyPromotion(): void
     {
-        $module = new CacheNamespaceModule('1', new RedisCacheModule(['localhost', 6379]));
+        $module = new CacheNamespaceModule('1', new Psr6RedisModule(['localhost', 6379]));
         $foo = (new Injector($module))->getInstance(FakeFoo::class);
         $this->assertInstanceOf(FakeFoo::class, $foo);
     }

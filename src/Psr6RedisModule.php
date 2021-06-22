@@ -14,7 +14,7 @@ use Ray\PsrCacheModule\Annotation\RedisInstance;
 use Ray\PsrCacheModule\Annotation\Shared;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
 
-final class RedisCacheModule extends AbstractModule
+final class Psr6RedisModule extends AbstractModule
 {
     /** @var array{0: string, 1:int} */
     private $server;

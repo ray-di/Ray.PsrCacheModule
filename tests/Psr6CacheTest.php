@@ -9,11 +9,11 @@ use Ray\Di\AbstractModule;
 use Ray\Di\Injector;
 use Ray\PsrCacheModule\Annotation\CacheDir;
 
-class PsrCacheTest extends TestCase
+class Psr6CacheTest extends TestCase
 {
     public function testDevPsrCacheModule(): void
     {
-        $module = new ArrayCacheModule();
+        $module = new Psr6ArrayModule();
         $this->assertInstanceOf(AbstractModule::class, $module);
     }
 

@@ -11,7 +11,7 @@ use Ray\PsrCacheModule\Annotation\Local;
 use Ray\PsrCacheModule\Annotation\Shared;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
-final class ArrayCacheModule extends AbstractModule
+final class Psr6ArrayModule extends AbstractModule
 {
     protected function configure(): void
     {
