@@ -7,7 +7,7 @@ namespace Ray\PsrCacheModule\Annotation;
 use Attribute;
 use Ray\Di\Di\Qualifier;
 
-/*
+/**
  * @Annotation
  * @Qualifier
  */
