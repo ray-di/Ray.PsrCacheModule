@@ -15,7 +15,7 @@ class RedisCacheModuleTest extends TestCase
 {
     public function testRedisCacheModule(): void
     {
-        $module = new CacheNamespaceModule('1', new Psr6RedisModule(['localhost', 6379]));
+        $module = new CacheNamespaceModule('1', new Psr6RedisModule('localhost:6379'));
         $cache = (new Injector($module))->getInstance(CacheItemPoolInterface::class, Shared::class);
         $this->assertInstanceOf(CacheItemPoolInterface::class, $cache);
     }

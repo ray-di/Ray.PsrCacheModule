@@ -14,15 +14,19 @@ use Ray\PsrCacheModule\Annotation\RedisInstance;
 use Ray\PsrCacheModule\Annotation\Shared;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
 
+use function array_map;
+use function explode;
+
 final class Psr6RedisModule extends AbstractModule
 {
-    /** @var array{0: string, 1:int} */
-    private $server;
+    /** @var list<list<string>> */
+    private $servers;
 
-    /** @param array{0: string, 1:int} $server */
-    public function __construct(array $server, ?AbstractModule $module = null)
+    public function __construct(string $servers, ?AbstractModule $module = null)
     {
-        $this->server = $server;
+        $this->servers = array_map(static function ($serverString) {
+            return explode(':', $serverString);
+        }, explode(',', $servers));
         parent::__construct($module);
     }
 
@@ -33,7 +37,7 @@ final class Psr6RedisModule extends AbstractModule
             'redisClient' => RedisInstance::class,
             'namespace' => CacheNamespace::class,
         ])->in(Scope::SINGLETON);
-        $this->bind()->annotatedWith(RedisConfig::class)->toInstance($this->server);
-        $this->bind('')->annotatedWith(RedisInstance::class)->toProvider(RedisProvider::class);
+        $this->bind()->annotatedWith(RedisConfig::class)->toInstance($this->servers);
+        $this->bind('')->annotatedWith('Ray\PsrCacheModule\Annotation\RedisInstance')->toProvider(RedisProvider::class);
     }
 }

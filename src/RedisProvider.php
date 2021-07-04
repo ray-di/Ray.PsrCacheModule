@@ -13,22 +13,18 @@ use function sprintf;
 
 class RedisProvider implements ProviderInterface
 {
-    /** @var string */
-    private $host;
-
-    /** @var int */
-    private $port;
+    /** @var list<list<string>> */
+    private $servers;
 
     /**
-     * @param array{0: string, 1: string} $server
+     * @param list<list<string>> $servers
      *
-     * @RedisConfig("server")
+     * @RedisConfig("servers")
      */
-    #[RedisConfig('server')]
-    public function __construct(array $server)
+    #[RedisConfig('servers')]
+    public function __construct(array $servers)
     {
-        $this->host = $server[0];
-        $this->port = (int) $server[1];
+        $this->servers = $servers;
     }
 
     /**
@@ -37,11 +33,15 @@ class RedisProvider implements ProviderInterface
     public function get()
     {
         $redis = new Redis();
-        $connected = $redis->connect($this->host, $this->port);
-        if (! $connected) {
-            // @codeCoverageIgnoreStart
-            throw new RedisConnectionException(sprintf('%s/%s', $this->host, $this->port));
-            // @codeCoverageIgnoreStart
+        foreach ($this->servers as $server) {
+            $host = $server[0];
+            $port = (int) $server[1];
+            $connected = $redis->connect($host, $port);
+            if (! $connected) {
+                // @codeCoverageIgnoreStart
+                throw new RedisConnectionException(sprintf('%s:%s', $host, $port));
+                // @codeCoverageIgnoreStart
+            }
         }
 
         return $redis;
