@@ -18,6 +18,7 @@
     },
     "require-dev": {
         "ext-redis": "*",
+        "ext-memcached": "*",
         "bamarni/composer-bin-plugin": "^1.4",
         "phpunit/phpunit": "^9.5"
     },
