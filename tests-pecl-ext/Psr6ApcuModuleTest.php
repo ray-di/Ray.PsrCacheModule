@@ -11,7 +11,7 @@ use Ray\PsrCacheModule\Annotation\Local;
 use Ray\PsrCacheModule\Psr6ApcuModule;
 use Ray\PsrCacheModule\CacheNamespaceModule;
 
-class ApcuCacheModuleTest extends TestCase
+class Psr6ApcuModuleTest extends TestCase
 {
     public function testApcuCacheModule(): void
     {

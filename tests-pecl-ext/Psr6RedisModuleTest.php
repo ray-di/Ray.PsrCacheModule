@@ -11,7 +11,7 @@ use Ray\PsrCacheModule\Annotation\Shared;
 use Ray\PsrCacheModule\CacheNamespaceModule;
 use Ray\PsrCacheModule\Psr6RedisModule;
 
-class RedisCacheModuleTest extends TestCase
+class Psr6RedisModuleTest extends TestCase
 {
     public function testRedisCacheModule(): void
     {
