@@ -80,7 +80,7 @@ assert($foo instanceof Foo);
 
 ### Psr6ArrayModule
 
-This module is for development.
+This module is for the development.
 
 * Local: Array
 * Shared: Array
@@ -93,7 +93,7 @@ new Psr6ArrayModule();
 
 ### Psr6ApcuModule
 
-This module is for a single web server.
+This module is for a standalone server
 
 * Local: Chain(APC, File)
 * Shared: Chain(APC, File)
@@ -106,7 +106,7 @@ new Psr6ApcuModule();
 
 ### Psr6RedisModule
 
-This module is for multiple web servers.
+This module is for multiple servers.
 
 * Local: Chain(APC, File)
 * Shared: [Redis](https://github.com/phpredis/phpredis/)
@@ -119,7 +119,7 @@ new Psr6RedisModule('redis1:6379,redis2:6379');
 
 ### Psr6MemcachedModule
 
-This module is for multiple web servers.
+This module is for multiple servers.
 
 * Local: Chain(APC, File)
 * Shared: [Memcached](https://www.php.net/manual/en/class.memcached.php)
