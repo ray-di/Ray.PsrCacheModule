@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
+use Memcached;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\AbstractModule;
 use Ray\Di\Scope;
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Ray\PsrCacheModule\Annotation\Local;
-use Ray\PsrCacheModule\Annotation\RedisConfig;
-use Ray\PsrCacheModule\Annotation\RedisInstance;
+use Ray\PsrCacheModule\Annotation\MemcacheConfig;
 use Ray\PsrCacheModule\Annotation\Shared;
-use Symfony\Component\Cache\Adapter\RedisAdapter;
+use Symfony\Component\Cache\Adapter\MemcachedAdapter;
 
 use function array_map;
 use function explode;
 
-final class Psr6RedisModule extends AbstractModule
+final class Psr6MemcachedModule extends AbstractModule
 {
     /** @var list<list<string>> */
     private $servers;
@@ -33,11 +33,10 @@ final class Psr6RedisModule extends AbstractModule
     protected function configure(): void
     {
         $this->bind(CacheItemPoolInterface::class)->annotatedWith(Local::class)->toProvider(LocalCacheProvider::class)->in(Scope::SINGLETON);
-        $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(RedisAdapter::class, [
-            'redisClient' => RedisInstance::class,
+        $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(MemcachedAdapter::class, [
             'namespace' => CacheNamespace::class,
         ])->in(Scope::SINGLETON);
-        $this->bind()->annotatedWith(RedisConfig::class)->toInstance($this->servers);
-        $this->bind('')->annotatedWith('Ray\PsrCacheModule\Annotation\RedisInstance')->toProvider(RedisProvider::class);
+        $this->bind()->annotatedWith(MemcacheConfig::class)->toInstance($this->servers);
+        $this->bind(Memcached::class)->toProvider(MemcachedProvider::class);
     }
 }

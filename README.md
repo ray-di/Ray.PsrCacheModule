@@ -1,5 +1,9 @@
 # Ray.PsrCacheModule
 
+[![codecov](https://codecov.io/gh/ray-di/Ray.PsrCacheModule/branch/1.x/graph/badge.svg?token=9X3wbURrU9)](https://codecov.io/gh/ray-di/Ray.PsrCacheModule)
+[![Type Coverage](https://shepherd.dev/github/ray-di/Ray.PsrCacheModule/coverage.svg)](https://shepherd.dev/github/ray-di/Ray.PsrCacheModule)
+[![Continuous Integration](https://github.com/ray-di/Ray.PsrCacheModule/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/ray-di/Ray.PsrCacheModule/actions/workflows/continuous-integration.yml)
+
 This package is the Ray.Di module that performs the [PSR-6](https://www.php-fig.org/psr/psr-6/) / [PSR-16](https://www.php-fig.org/psr/psr-16/) interface binding.
 
 You can use the PSR6 cache interface in two ways: `Local` and `Public`.
@@ -104,13 +108,27 @@ new Psr6ApcuModule();
 This module is for multiple web servers.
 
 * Local: Chain(APC, File)
-* Shared: Redis
+* Shared: [Redis](https://github.com/phpredis/phpredis/)
 
 ```php
 use Ray\PsrCacheModule\Psr6RedisModule;
 
-new Psr6RedisModule(['localhost', '6379']);
+new Psr6RedisModule('redis1:6379,redis2:6379');
 ```
+
+### Psr6MemcachedModule
+
+This module is for multiple web servers.
+
+* Local: Chain(APC, File)
+* Shared: [Memcached](https://www.php.net/manual/en/class.memcached.php)
+
+```php
+use Ray\PsrCacheModule\Psr6MemcachedModule;
+
+new Psr6MemcachedModule('memcached1:11211:60,memcached2:11211:33');
+```
+See https://www.php.net/manual/en/memcached.addservers.php
 
 ## PSR-16
 
