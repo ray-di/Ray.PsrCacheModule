@@ -104,13 +104,27 @@ new Psr6ApcuModule();
 This module is for multiple web servers.
 
 * Local: Chain(APC, File)
-* Shared: Redis
+* Shared: [Redis](https://github.com/phpredis/phpredis/)
 
 ```php
 use Ray\PsrCacheModule\Psr6RedisModule;
 
-new Psr6RedisModule(['localhost', '6379']);
+new Psr6RedisModule('redis1:6379,redis2:6379');
 ```
+
+### Psr6MemcachedModule
+
+This module is for multiple web servers.
+
+* Local: Chain(APC, File)
+* Shared: [Memcached](https://www.php.net/manual/en/class.memcached.php)
+
+```php
+use Ray\PsrCacheModule\Psr6MemcachedModule;
+
+new Psr6MemcachedModule('memcached1:11211:60,memcached2:11211:33');
+```
+See https://www.php.net/manual/en/memcached.addservers.php
 
 ## PSR-16
 
