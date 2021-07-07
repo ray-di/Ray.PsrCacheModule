@@ -56,7 +56,6 @@ Create object graph
 ```php
 use Ray\Di\AbstractModule;
 use Ray\Di\Injector;
-use Ray\PsrCacheModule\Psr16CacheModule;
 use Ray\PsrCacheModule\Psr6ArrayModule;
 
 $foo = (new Injector(new class extends AbstractModule {
@@ -114,7 +113,7 @@ This module is for multiple servers.
 ```php
 use Ray\PsrCacheModule\Psr6RedisModule;
 
-new Psr6RedisModule('redis1:6379,redis2:6379');
+new Psr6RedisModule('redis1:6379:1'); // host:port:dbIndex
 ```
 
 ### Psr6MemcachedModule
@@ -127,7 +126,7 @@ This module is for multiple servers.
 ```php
 use Ray\PsrCacheModule\Psr6MemcachedModule;
 
-new Psr6MemcachedModule('memcached1:11211:60,memcached2:11211:33');
+new Psr6MemcachedModule('memcached1:11211:60,memcached2:11211:33');  // host:port:weight
 ```
 See https://www.php.net/manual/en/memcached.addservers.php
 
