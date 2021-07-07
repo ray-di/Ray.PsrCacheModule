@@ -37,9 +37,10 @@ class RedisProvider implements ProviderInterface
         $port = (int) $this->server[1];
         $connected = $redis->connect($host, $port);
         if (isset($this->server[2])) {
-            $dbIndex = $this->server[2];
+            $dbIndex = (int) $this->server[2];
             $redis->select($dbIndex);
         }
+
         if (! $connected) {
             // @codeCoverageIgnoreStart
             throw new RedisConnectionException(sprintf('%s:%s', $host, $port));
