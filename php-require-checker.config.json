@@ -1,6 +1,6 @@
 {
   "symbol-whitelist": [
-    "int", "array", "null", "parent", "string", "void",
+    "int", "array", "null", "parent", "string", "void", "bool", "false",
     "Redis", "Memcached"
   ]
 }
