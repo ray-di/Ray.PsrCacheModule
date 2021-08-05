@@ -31,7 +31,7 @@ final class Psr6RedisModule extends AbstractModule
     {
         $this->bind(CacheItemPoolInterface::class)->annotatedWith(Local::class)->toProvider(LocalCacheProvider::class)->in(Scope::SINGLETON);
         $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(RedisAdapter::class, [
-            'redisClient' => RedisInstance::class,
+            'redis' => RedisInstance::class,
             'namespace' => CacheNamespace::class,
         ])->in(Scope::SINGLETON);
         $this->bind()->annotatedWith(RedisConfig::class)->toInstance($this->server);
