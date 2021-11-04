@@ -36,6 +36,6 @@ class PhpFileAdapter extends OriginAdapter implements Serializable
      */
     public function unserialize($data)
     {
-        call_user_func_array([$this, '__construct'], unserialize($data));
+        call_user_func_array([$this, '__construct'], unserialize($data)); // @phpstan-ignore-line
     }
 }
