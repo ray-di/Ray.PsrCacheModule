@@ -4,17 +4,19 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
+use JetBrains\PhpStorm\Deprecated;
 use Serializable;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter as OriginAdapter;
 use Symfony\Component\Cache\Marshaller\MarshallerInterface;
 
 use function call_user_func_array;
 use function func_get_args;
-use function serialize;
-use function unserialize;
 
+#[Deprecated]
 class FilesystemAdapter extends OriginAdapter implements Serializable
 {
+    use Php73BcSerializableTrait;
+
     /** @var array<int, mixed> */
     private $args;
 
@@ -27,16 +29,16 @@ class FilesystemAdapter extends OriginAdapter implements Serializable
     /**
      * @inheritDoc
      */
-    public function serialize()
+    public function __serialize(): array
     {
-        return serialize($this->args);
+        return $this->args;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public function unserialize($data)
+    public function __unserialize($data)
     {
-        call_user_func_array([$this, '__construct'], unserialize($data)); // @phpstan-ignore-line
+        call_user_func_array([$this, '__construct'], $data); // @phpstan-ignore-line
     }
 }
