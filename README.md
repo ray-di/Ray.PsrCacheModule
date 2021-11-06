@@ -77,6 +77,19 @@ assert($foo instanceof Foo);
 
 ## PSR-6
 
+### Psr6NullModule
+
+This module is for the development.
+
+* Local: Null
+* Shared: Null
+
+```php
+use Ray\PsrCacheModule\Psr6NullModule;
+
+new Psr6NullModule();
+```
+
 ### Psr6ArrayModule
 
 This module is for the development.
