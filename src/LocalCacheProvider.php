@@ -9,7 +9,6 @@ use Ray\PsrCacheModule\Annotation\CacheDir;
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Symfony\Component\Cache\Adapter\ApcuAdapter;
 use Symfony\Component\Cache\Adapter\ChainAdapter;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter as SymfonyFilesystemAdapter;
 
 use function sys_get_temp_dir;
 
@@ -36,7 +35,7 @@ class LocalCacheProvider implements ProviderInterface
     {
         return new ChainAdapter([
             new ApcuAdapter($this->namespace),
-            new SymfonyFilesystemAdapter($this->namespace, 0, $this->cacheDir),
+            new FilesystemAdapter($this->namespace, 0, $this->cacheDir),
         ]);
     }
 }
