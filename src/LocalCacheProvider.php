@@ -12,7 +12,7 @@ use Symfony\Component\Cache\Adapter\ChainAdapter;
 
 use function sys_get_temp_dir;
 
-class LocalCacheProvider implements ProviderInterface
+final class LocalCacheProvider implements ProviderInterface
 {
     /** @var string */
     private $cacheDir;
