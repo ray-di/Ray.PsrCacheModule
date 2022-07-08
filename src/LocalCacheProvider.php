@@ -9,6 +9,7 @@ use Ray\PsrCacheModule\Annotation\CacheNamespace;
 
 /**
  * @implements ProviderInterface<ApcuAdapter>
+ * @deprecated
  */
 final class LocalCacheProvider implements ProviderInterface
 {
