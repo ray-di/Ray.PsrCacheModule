@@ -8,6 +8,9 @@ use Memcached;
 use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\MemcacheConfig;
 
+/**
+ * @implements ProviderInterface<Memcached>
+ */
 class MemcachedProvider implements ProviderInterface
 {
     /**
@@ -32,7 +35,7 @@ class MemcachedProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function get()
+    public function get(): Memcached
     {
         $memcache = new Memcached();
         $memcache->addServers($this->servers);

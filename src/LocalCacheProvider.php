@@ -7,6 +7,9 @@ namespace Ray\PsrCacheModule;
 use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
 
+/**
+ * @implements ProviderInterface<ApcuAdapter>
+ */
 final class LocalCacheProvider implements ProviderInterface
 {
     /** @var string */
