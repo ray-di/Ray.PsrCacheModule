@@ -32,10 +32,8 @@ final class Psr6MemcachedModule extends AbstractModule
 
     protected function configure(): void
     {
-        $this->bind(CacheItemPoolInterface::class)->annotatedWith(Local::class)->toProvider(LocalCacheProvider::class)->in(Scope::SINGLETON);
-        $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(MemcachedAdapter::class, [
-            'namespace' => CacheNamespace::class,
-        ]);
+        $this->bind(CacheItemPoolInterface::class)->annotatedWith(Local::class)->toConstructor(ApcuAdapter::class, ['namespace' => CacheNamespace::class])->in(Scope::SINGLETON);
+        $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(MemcachedAdapter::class, ['namespace' => CacheNamespace::class])->in(Scope::SINGLETON);
         $this->bind()->annotatedWith(MemcacheConfig::class)->toInstance($this->servers);
         $this->bind(Memcached::class)->toProvider(MemcachedProvider::class);
     }

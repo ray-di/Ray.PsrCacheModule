@@ -11,6 +11,9 @@ use Redis;
 
 use function sprintf;
 
+/**
+ * @implements ProviderInterface<Redis>
+ */
 class RedisProvider implements ProviderInterface
 {
     /** @var list<string> */
@@ -30,7 +33,7 @@ class RedisProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function get()
+    public function get(): Redis
     {
         $redis = new Redis();
         $host = $this->server[0];
