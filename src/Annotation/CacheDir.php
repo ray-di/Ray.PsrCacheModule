@@ -13,7 +13,7 @@ use Ray\Di\Di\Qualifier;
  * @Qualifier
  * @NamedArgumentConstructor
  */
-#[Attribute, Qualifier]
+#[Attribute(Attribute::TARGET_PARAMETER | Attribute::TARGET_METHOD), Qualifier]
 final class CacheDir
 {
     /** @var string */
