@@ -7,9 +7,6 @@ namespace Ray\PsrCacheModule;
 use function serialize;
 use function unserialize;
 
-/**
- * @deprecated 
- */
 trait Php73BcSerializableTrait
 {
     /**
