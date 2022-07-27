@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
+use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Serializable;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter as OriginAdapter;
 use Symfony\Component\Cache\Marshaller\MarshallerInterface;
@@ -14,6 +15,10 @@ class FilesystemAdapter extends OriginAdapter implements Serializable
 {
     use SerializableTrait;
 
+    /**
+     * @CacheNamespace("namespace")
+     */
+    #[CacheNamespace('namespace')]
     public function __construct(string $namespace = '', int $defaultLifetime = 0, ?string $directory = null, ?MarshallerInterface $marshaller = null)
     {
         $this->args = func_get_args();
