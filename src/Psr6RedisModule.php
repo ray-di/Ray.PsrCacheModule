@@ -35,6 +35,6 @@ final class Psr6RedisModule extends AbstractModule
             'namespace' => CacheNamespace::class,
         ]);
         $this->bind()->annotatedWith(RedisConfig::class)->toInstance($this->server);
-        $this->bind('')->annotatedWith('Ray\PsrCacheModule\Annotation\RedisInstance')->toProvider(RedisProvider::class);
+        $this->bind('')->annotatedWith(RedisInstance::class)->toProvider(RedisProvider::class);
     }
 }
