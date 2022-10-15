@@ -32,4 +32,11 @@ class Psr6CacheTest extends TestCase
         $cacheDir = (new Injector($module))->getInstance('', CacheDir::class); // @phpstan-ignore-line
         $this->assertSame('/tmp', $cacheDir);
     }
+
+    public function testPsr6LocalCacheModule(): void
+    {
+        $module = new Psr6LocalCacheModule();
+        $cache = (new Injector($module))->getInstance(CacheItemPoolInterface::class, Shared::class);
+        $this->assertTrue($cache instanceof ApcuAdapter || $cache instanceof FilesystemAdapter);
+    }
 }
