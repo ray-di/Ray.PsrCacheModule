@@ -10,6 +10,7 @@ use Symfony\Component\Cache\Adapter\PhpFilesAdapter as OriginAdapter;
 
 use function func_get_args;
 
+/** @psalm-suppress PropertyNotSetInConstructor */
 class PhpFileAdapter extends OriginAdapter implements Serializable
 {
     use SerializableTrait;
