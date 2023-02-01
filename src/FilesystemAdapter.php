@@ -26,6 +26,7 @@ class FilesystemAdapter extends OriginAdapter implements Serializable
     public function __construct(string $namespace = '', int $defaultLifetime = 0, ?string $directory = null, ?MarshallerInterface $marshaller = null)
     {
         $this->args = func_get_args();
+
         parent::__construct($namespace, $defaultLifetime, $directory, $marshaller);
     }
 }

@@ -15,6 +15,7 @@ final class CacheNamespaceModule extends AbstractModule
     public function __construct(string $namespace, ?AbstractModule $module = null)
     {
         $this->namespace = $namespace;
+
         parent::__construct($module);
     }
 

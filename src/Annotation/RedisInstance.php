@@ -11,7 +11,8 @@ use Ray\Di\Di\Qualifier;
  * @Annotation
  * @Qualifier()
  */
-#[Attribute, Qualifier]
+#[Attribute]
+#[Qualifier]
 final class RedisInstance
 {
 }

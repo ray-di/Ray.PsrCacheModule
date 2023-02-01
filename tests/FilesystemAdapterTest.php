@@ -22,9 +22,7 @@ class FilesystemAdapterTest extends TestCase
         return $string;
     }
 
-    /**
-     * @depends testSerialize
-     */
+    /** @depends testSerialize */
     public function testUnserialize(string $string): void
     {
         $this->assertInstanceOf(FilesystemAdapter::class, unserialize($string));

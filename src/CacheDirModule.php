@@ -15,6 +15,7 @@ final class CacheDirModule extends AbstractModule
     public function __construct(string $cacheDir, ?AbstractModule $module = null)
     {
         $this->cacheDir = $cacheDir;
+
         parent::__construct($module);
     }
 
