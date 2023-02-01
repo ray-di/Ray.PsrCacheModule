@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^7.3 || ^8.0",
-        "psr/cache": "^1.0.1",
+        "psr/cache": "^1.0.1 || ^2.0 || ^3.0",
         "ray/di": "^2.13.2",
         "symfony/cache": "^5.3.4 || ^6.0",
         "doctrine/annotations": "^1.13",
