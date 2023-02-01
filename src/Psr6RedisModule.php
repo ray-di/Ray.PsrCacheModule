@@ -24,6 +24,7 @@ final class Psr6RedisModule extends AbstractModule
     public function __construct(string $server, ?AbstractModule $module = null)
     {
         $this->server = explode(':', $server);
+
         parent::__construct($module);
     }
 

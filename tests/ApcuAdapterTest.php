@@ -19,9 +19,7 @@ class ApcuAdapterTest extends TestCase
         return $string;
     }
 
-    /**
-     * @depends testSerialize
-     */
+    /** @depends testSerialize */
     public function testUnserialize(string $string): void
     {
         $this->assertInstanceOf(ApcuAdapter::class, unserialize($string));

@@ -27,6 +27,7 @@ final class Psr6MemcachedModule extends AbstractModule
         $this->servers = array_map(static function ($serverString) {
             return explode(':', $serverString);
         }, explode(',', $servers));
+
         parent::__construct($module);
     }
 

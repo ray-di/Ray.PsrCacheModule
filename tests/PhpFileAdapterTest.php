@@ -19,9 +19,7 @@ class PhpFileAdapterTest extends TestCase
         return $string;
     }
 
-    /**
-     * @depends testSerialize
-     */
+    /** @depends testSerialize */
     public function testUnserialize(string $string): void
     {
         $this->assertInstanceOf(PhpFileAdapter::class, unserialize($string));

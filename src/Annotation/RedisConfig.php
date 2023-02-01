@@ -13,7 +13,8 @@ use Ray\Di\Di\Qualifier;
  * @Qualifier
  * @NamedArgumentConstructor
  */
-#[Attribute, Qualifier]
+#[Attribute]
+#[Qualifier]
 final class RedisConfig
 {
     /** @var string */

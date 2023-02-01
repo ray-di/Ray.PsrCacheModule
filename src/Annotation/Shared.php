@@ -13,7 +13,8 @@ use Ray\Di\Di\Qualifier;
  * @Qualifier
  * @NamedArgumentConstructor
  */
-#[Attribute(Attribute::TARGET_PARAMETER | Attribute::TARGET_METHOD), Qualifier]
+#[Attribute(Attribute::TARGET_PARAMETER | Attribute::TARGET_METHOD)]
+#[Qualifier]
 final class Shared
 {
     /** @var string */

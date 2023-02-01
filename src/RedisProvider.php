@@ -11,9 +11,7 @@ use Redis;
 
 use function sprintf;
 
-/**
- * @implements ProviderInterface<Redis>
- */
+/** @implements ProviderInterface<Redis> */
 class RedisProvider implements ProviderInterface
 {
     /** @var list<string> */
