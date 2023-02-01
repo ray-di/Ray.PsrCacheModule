@@ -43,9 +43,7 @@ class RedisProvider implements ProviderInterface
         }
 
         if (! $connected) {
-            // @codeCoverageIgnoreStart
-            throw new RedisConnectionException(sprintf('%s:%s', $host, $port));
-            // @codeCoverageIgnoreStart
+            throw new RedisConnectionException(sprintf('%s:%s', $host, $port)); // @codeCoverageIgnore
         }
 
         return $redis;
