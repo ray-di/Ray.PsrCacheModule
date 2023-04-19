@@ -5,7 +5,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
-    phpVersion="7.4"
+    phpVersion="8.2"
+    findUnusedBaselineEntry="false"
+    findUnusedCode="false"
 >
     <projectFiles>
         <directory name="src" />
@@ -13,4 +15,8 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <MethodSignatureMismatch errorLevel="suppress" />
+        <UnimplementedAbstractMethod errorLevel="suppress" />
+    </issueHandlers>
 </psalm>
