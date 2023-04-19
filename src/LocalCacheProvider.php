@@ -11,6 +11,8 @@ use Symfony\Component\Cache\Adapter\AbstractAdapter;
 
 use function sys_get_temp_dir;
 
+use const PHP_SAPI;
+
 /**
  * Provide APCu cache adapter if available, otherwise file cache adapter
  *
@@ -34,7 +36,7 @@ final class LocalCacheProvider implements ProviderInterface
 
     public function get(): AbstractAdapter
     {
-        return ApcuAdapter::isSupported() ?
+        return PHP_SAPI !== 'cli' && ApcuAdapter::isSupported() ?
             // @codeCoverageIgnoreStart
             new ApcuAdapter($this->namespace) :
             // @codeCoverageIgnoreEnd
