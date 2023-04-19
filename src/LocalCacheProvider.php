@@ -35,7 +35,9 @@ final class LocalCacheProvider implements ProviderInterface
     public function get(): AbstractAdapter
     {
         return ApcuAdapter::isSupported() ?
+            // @codeCoverageIgnoreStart
             new ApcuAdapter($this->namespace) :
+            // @codeCoverageIgnoreEnd
             new FilesystemAdapter($this->namespace, 0, $this->cacheDir);
     }
 }

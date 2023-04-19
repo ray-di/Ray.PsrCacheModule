@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
-use LogicException;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\AbstractModule;
 use Ray\Di\Scope;
@@ -14,6 +13,7 @@ use Ray\PsrCacheModule\Annotation\RedisConfig;
 use Ray\PsrCacheModule\Annotation\RedisInstance;
 use Ray\PsrCacheModule\Annotation\Shared;
 use Redis;
+use RuntimeException;
 
 use function class_exists;
 use function explode;
@@ -33,7 +33,9 @@ final class Psr6RedisModule extends AbstractModule
     protected function configure(): void
     {
         if (! class_exists(Redis::class)) {
-            throw new LogicException('Redis not installed.');
+            // @codeCoverageIgnoreStart
+            throw new RuntimeException('Redis not installed.');
+            // @codeCoverageIgnoreEnd
         }
 
         $this->bind(Redis::class);
