@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
+use LogicException;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\AbstractModule;
 use Ray\Di\Scope;
@@ -12,8 +13,9 @@ use Ray\PsrCacheModule\Annotation\Local;
 use Ray\PsrCacheModule\Annotation\RedisConfig;
 use Ray\PsrCacheModule\Annotation\RedisInstance;
 use Ray\PsrCacheModule\Annotation\Shared;
-use Symfony\Component\Cache\Adapter\RedisAdapter;
+use Redis;
 
+use function class_exists;
 use function explode;
 
 final class Psr6RedisModule extends AbstractModule
@@ -30,6 +32,11 @@ final class Psr6RedisModule extends AbstractModule
 
     protected function configure(): void
     {
+        if (! class_exists(Redis::class)) {
+            throw new LogicException('Redis not installed.');
+        }
+
+        $this->bind(Redis::class);
         $this->bind(CacheItemPoolInterface::class)->annotatedWith(Local::class)->toConstructor(ApcuAdapter::class, ['namespace' => CacheNamespace::class])->in(Scope::SINGLETON);
         $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(RedisAdapter::class, [
             'redis' => RedisInstance::class,

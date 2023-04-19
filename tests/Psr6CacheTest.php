@@ -29,7 +29,7 @@ class Psr6CacheTest extends TestCase
     public function testCacheDirModule(): void
     {
         $module = new CacheDirModule('/tmp');
-        $cacheDir = (new Injector($module))->getInstance('', CacheDir::class);
+        $cacheDir = (new Injector($module))->getInstance('', CacheDir::class); // @phpstan-ignore-line
         $this->assertSame('/tmp', $cacheDir);
     }
 
