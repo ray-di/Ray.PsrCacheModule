@@ -11,7 +11,6 @@ use Redis;
 use Symfony\Component\Cache\Adapter\AbstractAdapter;
 use Symfony\Contracts\Cache\ItemInterface;
 
-use function assert;
 use function serialize;
 use function unserialize;
 
@@ -20,11 +19,8 @@ class RedisAdapterTest extends TestCase
     /** @return array{0:string, 1: RedisAdapter} */
     public function testSerialize(): array
     {
-        $client = RedisAdapter::createConnection(
-            'redis://localhost',
-        );
-        assert($client instanceof Redis);
-        $adapter = new RedisAdapter($client);
+        $provider = new RedisProvider(['127.0.0.1', '6379']);
+        $adapter = new RedisAdapter($provider);
         $adapter->get('foo', static function (ItemInterface $item) {
             return 'foobar';
         });

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ray\PsrCacheModule;
 
 use Ray\Di\Di\Named;
+use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Redis;
 use Serializable;
@@ -19,17 +20,17 @@ class RedisAdapter extends OriginAdapter implements Serializable
     use SerializableTrait;
 
     /**
-     * @param Redis $redis
+     * @param ProviderInterface<Redis> $redisProvider
      *
      * @CacheNamespace("namespace")
-     * @Named("redis=Ray\PsrCacheModule\Annotation\RedisInstance")
+     * @Named("redisProvider=redis")
      */
     #[CacheNamespace('namespace')]
-    #[Named('redis=Ray\PsrCacheModule\Annotation\RedisInstance')]
-    public function __construct($redis, string $namespace = '', int $defaultLifetime = 0, ?MarshallerInterface $marshaller = null)
+    #[Named('redisProvider=redis')]
+    public function __construct(ProviderInterface $redisProvider, string $namespace = '', int $defaultLifetime = 0, ?MarshallerInterface $marshaller = null)
     {
         $this->args = func_get_args();
 
-        parent::__construct($redis, $namespace, $defaultLifetime, $marshaller);
+        parent::__construct($redisProvider->get(), $namespace, $defaultLifetime, $marshaller);
     }
 }
