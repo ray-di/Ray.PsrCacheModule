@@ -9,24 +9,52 @@ use Ray\Di\AbstractModule;
 use Ray\Di\Injector;
 use Redis;
 use Symfony\Component\Cache\Adapter\AbstractAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
+use function assert;
 use function serialize;
 use function unserialize;
 
 class RedisAdapterTest extends TestCase
 {
-    public function testSerialize(): string
+    /** @return array{0:string, 1: RedisAdapter} */
+    public function testSerialize(): array
     {
-        $string = serialize(new RedisAdapter(new Redis()));
+        $client = RedisAdapter::createConnection(
+            'redis://localhost',
+        );
+        assert($client instanceof Redis);
+        $adapter = new RedisAdapter($client);
+        $adapter->get('foo', static function (ItemInterface $item) {
+            return 'foobar';
+        });
+        $foo = $adapter->get('foo', static function (ItemInterface $item) {
+            return '_no_serve_';
+        });
+        $this->assertSame('foobar', $foo);
+        $string = serialize($adapter);
         $this->assertIsString($string);
 
-        return $string;
+        return [$string, $adapter];
     }
 
-    /** @depends testSerialize */
-    public function testUnserialize(string $string): void
+    /**
+     * @param array{0:string, 1: RedisAdapter} $adapters
+     *
+     * @depends testSerialize
+     */
+    public function testUnserialize(array $adapters): void
     {
-        $this->assertInstanceOf(RedisAdapter::class, unserialize($string));
+        $this->assertInstanceOf(RedisAdapter::class, $adapters[1]);
+        $this->assertSame('foobar', $adapters[1]->get('foo', static function (ItemInterface $item) {
+            return '_no_serve_in_object';
+        }));
+
+        $adapter0 = unserialize($adapters[0]);
+        $this->assertInstanceOf(RedisAdapter::class, $adapter0);
+        $this->assertSame('foobar', $adapter0->get('foo', static function (ItemInterface $item) {
+            return '_no_serve_in_serialize';
+        }));
     }
 
     public function testCacheNamespaceModule(): void
