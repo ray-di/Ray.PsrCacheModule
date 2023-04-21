@@ -175,4 +175,8 @@ use Ray\PsrCacheModule\CacheNamespaceModule;
 
 new CacheNamespaceModule('app1');
 ```
+### Technical Note
 
+Redis, Memcached classes and symfony/cache adapters are not serializable, but RedisAdapter and MemcachedAdapter, which inherit from symfony/cache and are provided in this package, are.
+
+```php
