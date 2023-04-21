@@ -11,6 +11,8 @@ trait Php73BcSerializableTrait
 {
     /**
      * {@inheritDoc}
+     *
+     * @psalm-suppress MethodSignatureMustProvideReturnType
      */
     final public function serialize()
     {
