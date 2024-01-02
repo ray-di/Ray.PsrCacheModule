@@ -24,7 +24,7 @@ trait Php73BcSerializableTrait
      *
      * {@inheritDoc}
      */
-    final public function unserialize($serializedData)
+    final public function unserialize($serializedData): void // phpcs:ignore SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingAnyTypeHint
     {
         $array = unserialize($serializedData);
         $this->__unserialize($array); // @phpstan-ignore-line
