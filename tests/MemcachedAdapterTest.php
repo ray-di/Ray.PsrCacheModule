@@ -15,11 +15,11 @@ use function unserialize;
 
 class MemcachedAdapterTest extends TestCase
 {
-    /** @return array{0:string, 1: MemcachdAdapter} */
+    /** @return array{0:string, 1: MemcachedAdapter} */
     public function testSerialize(): array
     {
         $provider = new MemcachedProvider([['127.0.0.1', '11211']]);
-        $adapter = new MemcachdAdapter($provider);
+        $adapter = new MemcachedAdapter($provider);
         $adapter->get('foo', static function (ItemInterface $item) {
             return 'foobar';
         });
@@ -34,19 +34,19 @@ class MemcachedAdapterTest extends TestCase
     }
 
     /**
-     * @param array{0:string, 1: MemcachdAdapter} $adapters
+     * @param array{0:string, 1: MemcachedAdapter} $adapters
      *
      * @depends testSerialize
      */
     public function testUnserialize(array $adapters): void
     {
-        $this->assertInstanceOf(MemcachdAdapter::class, $adapters[1]);
+        $this->assertInstanceOf(MemcachedAdapter::class, $adapters[1]);
         $this->assertSame('foobar', $adapters[1]->get('foo', static function (ItemInterface $item) {
             return '_no_serve_in_object';
         }));
 
         $adapter0 = unserialize($adapters[0]);
-        $this->assertInstanceOf(MemcachdAdapter::class, $adapter0);
+        $this->assertInstanceOf(MemcachedAdapter::class, $adapter0);
         $this->assertSame('foobar', $adapter0->get('foo', static function (ItemInterface $item) {
             return '_no_serve_in_serialize';
         }));
@@ -59,11 +59,11 @@ class MemcachedAdapterTest extends TestCase
             {
                 $this->install(new CacheNamespaceModule('a'));
                 $this->install(new CacheDirModule('/tmp/a'));
-                $this->bind(AbstractAdapter::class)->to(MemcachdAdapter::class);
+                $this->bind(AbstractAdapter::class)->to(MemcachedAdapter::class);
                 $this->install(new Psr6MemcachedModule('127.0.0.1:6379:1'));
             }
         });
         $adapter = $injector->getInstance(AbstractAdapter::class);
-        $this->assertInstanceOf(MemcachdAdapter::class, $adapter);
+        $this->assertInstanceOf(MemcachedAdapter::class, $adapter);
     }
 }

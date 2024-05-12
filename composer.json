@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ray\\PsrCacheModule\\": ["src/", "src-deprecated"]
+            "Ray\\PsrCacheModule\\": ["src/", "src-deprecated/"]
         }
     },
     "autoload-dev": {
