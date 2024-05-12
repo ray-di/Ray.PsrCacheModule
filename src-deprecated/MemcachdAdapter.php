@@ -14,10 +14,7 @@ use Symfony\Component\Cache\Marshaller\MarshallerInterface;
 
 use function func_get_args;
 
-/**
- * @psalm-suppress PropertyNotSetInConstructor
- * @deprecated Use \Ray\PsrCacheModule\MemcachedAdapter instead
- */
+/** @deprecated Use \Ray\PsrCacheModule\MemcachedAdapter instead */
 class MemcachdAdapter extends OriginAdapter implements Serializable
 {
     use SerializableTrait;
