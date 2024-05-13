@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ray\PsrCacheModule;
 
 use Memcached;
-use Ray\Di\Di\Named;
 use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Serializable;
@@ -22,12 +21,10 @@ class MemcachedAdapter extends OriginAdapter implements Serializable
     /**
      * @param ProviderInterface<Memcached> $clientProvider
      *
-     * @Named("memcached")
      * @CacheNamespace("namespace")
      */
     #[CacheNamespace('namespace')]
-    #[Named('memcached')]
-    public function __construct(ProviderInterface $clientProvider, string $namespace = '', int $defaultLifetime = 0, ?MarshallerInterface $marshaller = null)
+    public function __construct(MemcachedProvider $clientProvider, string $namespace = '', int $defaultLifetime = 0, ?MarshallerInterface $marshaller = null)
     {
         $this->args = func_get_args();
 
