@@ -13,7 +13,6 @@ use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Ray\PsrCacheModule\Annotation\Local;
 use Ray\PsrCacheModule\Annotation\MemcacheConfig;
 use Ray\PsrCacheModule\Annotation\Shared;
-use Symfony\Component\Cache\Adapter\MemcachedAdapter;
 
 use function array_map;
 use function explode;
