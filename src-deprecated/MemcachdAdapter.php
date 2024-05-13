@@ -19,18 +19,10 @@ class MemcachdAdapter extends OriginAdapter implements Serializable
 {
     use SerializableTrait;
 
-    /**
-     * @param ProviderInterface<Memcached> $clientProvider
-     *
-     * @Named("memcached")
-     * @CacheNamespace("namespace")
-     */
-    #[CacheNamespace('namespace')]
-    #[Named('memcached')]
-    public function __construct(ProviderInterface $clientProvider, string $namespace = '', int $defaultLifetime = 0, ?MarshallerInterface $marshaller = null)
+    public function __construct(MemcachedProvider $provider, string $namespace = '', int $defaultLifetime = 0, ?MarshallerInterface $marshaller = null)
     {
         $this->args = func_get_args();
 
-        parent::__construct($clientProvider->get(), $namespace, $defaultLifetime, $marshaller);
+        parent::__construct($provider->get(), $namespace, $defaultLifetime, $marshaller);
     }
 }

@@ -7,13 +7,11 @@ namespace Ray\PsrCacheModule;
 use Memcached;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\AbstractModule;
-use Ray\Di\ProviderInterface;
 use Ray\Di\Scope;
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Ray\PsrCacheModule\Annotation\Local;
 use Ray\PsrCacheModule\Annotation\MemcacheConfig;
 use Ray\PsrCacheModule\Annotation\Shared;
-use Symfony\Component\Cache\Adapter\MemcachedAdapter;
 
 use function array_map;
 use function explode;
@@ -38,6 +36,6 @@ final class Psr6MemcachedModule extends AbstractModule
         $this->bind(CacheItemPoolInterface::class)->annotatedWith(Shared::class)->toConstructor(MemcachedAdapter::class, ['namespace' => CacheNamespace::class])->in(Scope::SINGLETON);
         $this->bind()->annotatedWith(MemcacheConfig::class)->toInstance($this->servers);
         $this->bind(Memcached::class)->toProvider(MemcachedProvider::class);
-        $this->bind(ProviderInterface::class)->annotatedWith('memcached')->to(MemcachedProvider::class);
+        $this->bind(MemcachedProvider::class);
     }
 }
