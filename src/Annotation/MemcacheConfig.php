@@ -17,7 +17,7 @@ use Ray\Di\Di\Qualifier;
 #[Qualifier]
 final class MemcacheConfig
 {
-    public function __construct(public string $value)
+    public function __construct(public string $value = '')
     {
     }
 }

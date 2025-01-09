@@ -9,10 +9,14 @@ use Ray\Di\Di\Qualifier;
 
 /**
  * @Annotation
- * @Qualifier()
+ * @Qualifier
+ * @NamedArgumentConstructor
  */
 #[Attribute]
 #[Qualifier]
 final class RedisInstance
 {
+    public function __construct(public string $value = '')
+    {
+    }
 }

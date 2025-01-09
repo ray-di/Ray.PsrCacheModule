@@ -17,7 +17,7 @@ use Ray\Di\Di\Qualifier;
 #[Qualifier]
 final class Shared
 {
-    public function __construct(public string $value = 'cache')
+    public function __construct(public string $value = '')
     {
     }
 }
