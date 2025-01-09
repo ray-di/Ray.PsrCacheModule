@@ -20,12 +20,8 @@ class MemcachedAdapterTest extends TestCase
     {
         $provider = new MemcachedProvider([['127.0.0.1', '11211']]);
         $adapter = new MemcachedAdapter($provider);
-        $adapter->get('foo', static function (ItemInterface $item) {
-            return 'foobar';
-        });
-        $foo = $adapter->get('foo', static function (ItemInterface $item) {
-            return '_no_serve_';
-        });
+        $adapter->get('foo', static fn (ItemInterface $item) => 'foobar');
+        $foo = $adapter->get('foo', static fn (ItemInterface $item) => '_no_serve_');
         $this->assertSame('foobar', $foo);
         $string = serialize($adapter);
         $this->assertIsString($string);
@@ -41,15 +37,11 @@ class MemcachedAdapterTest extends TestCase
     public function testUnserialize(array $adapters): void
     {
         $this->assertInstanceOf(MemcachedAdapter::class, $adapters[1]);
-        $this->assertSame('foobar', $adapters[1]->get('foo', static function (ItemInterface $item) {
-            return '_no_serve_in_object';
-        }));
+        $this->assertSame('foobar', $adapters[1]->get('foo', static fn (ItemInterface $item) => '_no_serve_in_object'));
 
         $adapter0 = unserialize($adapters[0]);
         $this->assertInstanceOf(MemcachedAdapter::class, $adapter0);
-        $this->assertSame('foobar', $adapter0->get('foo', static function (ItemInterface $item) {
-            return '_no_serve_in_serialize';
-        }));
+        $this->assertSame('foobar', $adapter0->get('foo', static fn (ItemInterface $item) => '_no_serve_in_serialize'));
     }
 
     public function testCacheNamespaceModule(): void

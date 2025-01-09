@@ -9,13 +9,8 @@ use Ray\PsrCacheModule\Annotation\CacheNamespace;
 
 final class CacheNamespaceModule extends AbstractModule
 {
-    /** @var string */
-    private $namespace;
-
-    public function __construct(string $namespace, ?AbstractModule $module = null)
+    public function __construct(private readonly string $namespace, ?AbstractModule $module = null)
     {
-        $this->namespace = $namespace;
-
         parent::__construct($module);
     }
 

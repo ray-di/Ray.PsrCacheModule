@@ -9,13 +9,8 @@ use Ray\PsrCacheModule\Annotation\CacheDir;
 
 final class CacheDirModule extends AbstractModule
 {
-    /** @var string */
-    private $cacheDir;
-
-    public function __construct(string $cacheDir, ?AbstractModule $module = null)
+    public function __construct(private readonly string $cacheDir, ?AbstractModule $module = null)
     {
-        $this->cacheDir = $cacheDir;
-
         parent::__construct($module);
     }
 
