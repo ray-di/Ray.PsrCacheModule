@@ -1,6 +1,6 @@
 {
     "name": "ray/psr-cache-module",
-    "description": "",
+    "description": "PSR-6 PSR-16 cache module for Ray.Di",
     "license": "MIT",
     "authors": [
         {
