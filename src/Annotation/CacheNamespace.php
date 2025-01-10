@@ -17,11 +17,7 @@ use Ray\Di\Di\Qualifier;
 #[Qualifier]
 final class CacheNamespace
 {
-    /** @var string */
-    public $value;
-
-    public function __construct(string $value)
+    public function __construct(public string $value = '')
     {
-        $this->value = $value;
     }
 }

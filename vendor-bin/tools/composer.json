@@ -6,10 +6,9 @@
         }
     },
     "require-dev": {
-        "vimeo/psalm": "^5.6",
+        "vimeo/psalm": "^5.6 || dev-master",
         "psalm/plugin-phpunit": "^0.18.4",
         "phpstan/phpstan": "^1.9",
-        "phpmetrics/phpmetrics": "^2.8",
         "squizlabs/php_codesniffer": "^3.7",
         "doctrine/coding-standard": "^11.1",
         "phpmd/phpmd": "^2.13"
