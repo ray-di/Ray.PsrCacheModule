@@ -11,17 +11,11 @@ use function unserialize;
 
 class PhpFileAdapterTest extends TestCase
 {
-    public function testSerialize(): string
+    public function testSerialize(): void
     {
         $string = serialize(new PhpFileAdapter());
-        $this->assertIsString($string);
+        $this->assertNotEmpty($string);
 
-        return $string;
-    }
-
-    /** @depends testSerialize */
-    public function testUnserialize(string $string): void
-    {
         $this->assertInstanceOf(PhpFileAdapter::class, unserialize($string));
     }
 }

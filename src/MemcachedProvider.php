@@ -26,9 +26,7 @@ class MemcachedProvider implements ProviderInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritDoc}*/
     public function get(): Memcached
     {
         $memcache = new Memcached();

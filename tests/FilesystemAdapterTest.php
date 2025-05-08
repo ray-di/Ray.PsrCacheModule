@@ -14,17 +14,11 @@ use function unserialize;
 
 class FilesystemAdapterTest extends TestCase
 {
-    public function testSerialize(): string
+    public function testSerialize(): void
     {
         $string = serialize(new FilesystemAdapter());
-        $this->assertIsString($string);
+        $this->assertNotEmpty($string);
 
-        return $string;
-    }
-
-    /** @depends testSerialize */
-    public function testUnserialize(string $string): void
-    {
         $this->assertInstanceOf(FilesystemAdapter::class, unserialize($string));
     }
 

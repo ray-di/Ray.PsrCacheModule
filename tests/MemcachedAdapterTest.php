@@ -24,7 +24,7 @@ class MemcachedAdapterTest extends TestCase
         $foo = $adapter->get('foo', static fn (ItemInterface $item) => '_no_serve_');
         $this->assertSame('foobar', $foo);
         $string = serialize($adapter);
-        $this->assertIsString($string);
+        $this->assertNotEmpty($string);
 
         return [$string, $adapter];
     }

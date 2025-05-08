@@ -24,9 +24,7 @@ class RedisProvider implements ProviderInterface
     {
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** {@inheritDoc}*/
     public function get(): Redis
     {
         $redis = new Redis();

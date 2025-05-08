@@ -11,17 +11,11 @@ use function unserialize;
 
 class ApcuAdapterTest extends TestCase
 {
-    public function testSerialize(): string
+    public function testSerialize(): void
     {
         $string = serialize(new ApcuAdapter());
-        $this->assertIsString($string);
+        $this->assertNotEmpty($string);
 
-        return $string;
-    }
-
-    /** @depends testSerialize */
-    public function testUnserialize(string $string): void
-    {
         $this->assertInstanceOf(ApcuAdapter::class, unserialize($string));
     }
 }
