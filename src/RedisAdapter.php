@@ -15,7 +15,7 @@ use Symfony\Component\Cache\Marshaller\MarshallerInterface;
 use function func_get_args;
 
 /** @psalm-suppress PropertyNotSetInConstructor */
-class RedisAdapter extends OriginAdapter implements Serializable
+final class RedisAdapter extends OriginAdapter implements Serializable
 {
     use SerializableTrait;
 

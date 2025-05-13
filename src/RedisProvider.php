@@ -12,7 +12,7 @@ use Redis;
 use function sprintf;
 
 /** @implements ProviderInterface<Redis> */
-class RedisProvider implements ProviderInterface
+final class RedisProvider implements ProviderInterface
 {
     /**
      * @param list<string> $server

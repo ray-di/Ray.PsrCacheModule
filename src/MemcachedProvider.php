@@ -9,7 +9,7 @@ use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\MemcacheConfig;
 
 /** @implements ProviderInterface<Memcached> */
-class MemcachedProvider implements ProviderInterface
+final class MemcachedProvider implements ProviderInterface
 {
     /**
      * @param array<array<string>> $servers

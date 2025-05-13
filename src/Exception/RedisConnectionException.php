@@ -6,6 +6,6 @@ namespace Ray\PsrCacheModule\Exception;
 
 use RuntimeException;
 
-class RedisConnectionException extends RuntimeException
+final class RedisConnectionException extends RuntimeException
 {
 }

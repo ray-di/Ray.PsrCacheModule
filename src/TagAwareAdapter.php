@@ -11,7 +11,7 @@ use Symfony\Component\Cache\Adapter\TagAwareAdapter as OriginAdapter;
 use function func_get_args;
 
 /** @psalm-suppress PropertyNotSetInConstructor */
-class TagAwareAdapter extends OriginAdapter implements Serializable
+final class TagAwareAdapter extends OriginAdapter implements Serializable
 {
     use SerializableTrait;
 
