@@ -11,3 +11,6 @@ coverage:
       default:
         target: 100%
 
+ignore:
+  - "src-deprecated/**"
+
