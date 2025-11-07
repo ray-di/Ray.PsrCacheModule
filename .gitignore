@@ -1,8 +1,12 @@
 /vendor/
 /vendor-bin/*/vendor/
+/vendor-bin/rector/
 /build/
 /composer.lock
 /phpunit.xml
 /.phpunit.result.cache
 /.phpcs-cache
 /.phpunit.cache
+/rector.php
+/rector-*.php
+/CHANGE.md
