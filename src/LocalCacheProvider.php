@@ -23,15 +23,11 @@ final class LocalCacheProvider implements ProviderInterface
     /** @var string  */
     private $cacheDir;
 
-    /** @var string  */
-    private $namespace;
-
     #[CacheDir('cacheDir')]
     #[CacheNamespace('namespace')]
-    public function __construct(string $cacheDir = '', string $namespace = '')
+    public function __construct(string $cacheDir = '', private readonly string $namespace = '')
     {
         $this->cacheDir = $cacheDir ?: sys_get_temp_dir();
-        $this->namespace = $namespace;
     }
 
     public function get(): AbstractAdapter
