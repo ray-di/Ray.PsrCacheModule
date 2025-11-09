@@ -18,13 +18,13 @@ use const PHP_SAPI;
  *
  * @implements ProviderInterface<ApcuAdapter|FilesystemAdapter>
  */
-final class LocalCacheProvider implements ProviderInterface
+final readonly class LocalCacheProvider implements ProviderInterface
 {
-    private readonly string $cacheDir;
+    private string $cacheDir;
 
     #[CacheDir('cacheDir')]
     #[CacheNamespace('namespace')]
-    public function __construct(string $cacheDir = '', private readonly string $namespace = '')
+    public function __construct(string $cacheDir = '', private string $namespace = '')
     {
         $this->cacheDir = $cacheDir ?: sys_get_temp_dir();
     }
