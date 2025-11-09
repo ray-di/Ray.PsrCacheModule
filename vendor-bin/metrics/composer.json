@@ -1,5 +1,5 @@
 {
     "require-dev": {
-        "phpmetrics/phpmetrics": "dev-master"
+        "phpmetrics/phpmetrics": "^2.8"
     }
 }
