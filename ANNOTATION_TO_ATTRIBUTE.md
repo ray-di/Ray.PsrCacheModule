@@ -2,7 +2,7 @@
 
 ## Overview
 
-Ray.PsrCacheModule v2.x has removed the dependency on `doctrine/annotations` and now exclusively uses native PHP 8 attributes. This guide will help you migrate your application code from Doctrine annotations to PHP 8 attributes.
+Ray.PsrCacheModule v1.5+ has removed the dependency on `doctrine/annotations` and now exclusively uses native PHP 8 attributes. This guide will help you migrate your application code from Doctrine annotations to PHP 8 attributes.
 
 ## Why Migrate?
 
@@ -15,15 +15,7 @@ Ray.PsrCacheModule v2.x has removed the dependency on `doctrine/annotations` and
 
 ## Migration Steps
 
-### Step 1: Update Ray.PsrCacheModule
-
-First, ensure you're using Ray.PsrCacheModule v2.x:
-
-```bash
-composer require ray/psr-cache-module:^2.0
-```
-
-### Step 2: Install Rector (if not already installed)
+### Step 1: Install Rector (if not already installed)
 
 Rector is an automated refactoring tool that can convert annotations to attributes:
 
@@ -31,7 +23,7 @@ Rector is an automated refactoring tool that can convert annotations to attribut
 composer require --dev rector/rector
 ```
 
-### Step 3: Run Automated Migration
+### Step 2: Run Automated Migration
 
 Ray.PsrCacheModule provides a Rector configuration file for automated migration:
 
@@ -49,7 +41,7 @@ If you have tests that use annotations:
 vendor/bin/rector process tests --config=vendor/ray/psr-cache-module/rector-migrate.php
 ```
 
-### Step 4: Manual Review
+### Step 3: Manual Review
 
 Review the changes made by Rector and adjust if necessary. Pay special attention to:
 
@@ -57,7 +49,7 @@ Review the changes made by Rector and adjust if necessary. Pay special attention
 - Annotations with custom parameters
 - Import statements (Rector should handle these automatically)
 
-### Step 5: Remove doctrine/annotations
+### Step 4: Remove doctrine/annotations
 
 After migration, you can safely remove the doctrine/annotations dependency:
 
@@ -253,11 +245,9 @@ composer test
 If you prefer not to use Rector, you can manually convert annotations:
 
 1. Replace `/** @AnnotationName */` with `#[AnnotationName]`
-2. Move attributes from docblocks to the appropriate location:
-   - For parameters: before the parameter declaration
-   - For methods/properties/classes: on the line before the declaration
-3. Ensure all necessary `use` statements are present
-4. Update annotation syntax from `@Annotation("value")` to `#[Annotation('value')]`
+2. Move attributes from docblocks to the line before the method/property/class
+3. For parameter annotations, place the attribute before the parameter type
+4. Ensure all necessary `use` statements are present
 
 ## Need Help?
 
