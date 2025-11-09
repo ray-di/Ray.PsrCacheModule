@@ -7,23 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0.0] - 2025-11-09
-
-### Breaking Changes
-
-- **PHP 8.2+ required** (previously 8.1+)
-- **Removed doctrine/annotations dependency** - All annotations now use native PHP 8 attributes exclusively
-
-### Removed
-
-- Serializable interface from cache adapters (use `__serialize`/`__unserialize` magic methods)
-- Unused `Php73BcSerializableTrait` class
-- Unused `RedisInstance` annotation class
+## [1.5.0] - 2025-11-09
 
 ### Changed
 
-- Use readonly properties where applicable for immutability
+- **PHP 8.2+ required** (previously 8.1+)
 - Update Symfony Cache dependency to `^6.0 || ^7.2`
+- Use readonly properties where applicable for immutability
+
+### Removed
+
+- **doctrine/annotations dependency** - All annotations now use native PHP 8 attributes exclusively (security fix for abandoned package)
+- Serializable interface from cache adapters (use `__serialize`/`__unserialize` magic methods)
+- Unused `Php73BcSerializableTrait` class
+- Unused `RedisInstance` annotation class
 
 ### Added
 
