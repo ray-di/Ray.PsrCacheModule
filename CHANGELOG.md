@@ -27,8 +27,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Migration Tools**: Added `rector-migrate.php` for automated annotation-to-attribute migration
+- **Migration Guide**: Added `ANNOTATION_TO_ATTRIBUTE.md` with comprehensive migration instructions
 - CLAUDE.md with project architecture and development workflow documentation
 - Comprehensive code coverage exclusions for deprecated code
+
+### Note
+
+- **Migration Required**: Applications using annotations must migrate to PHP 8 attributes
+- Use provided Rector configuration for automated migration: `vendor/bin/rector process src --config=vendor/ray/psr-cache-module/rector-migrate.php`
+- See `ANNOTATION_TO_ATTRIBUTE.md` for detailed migration guide
 
 ### Fixed
 

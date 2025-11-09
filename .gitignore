@@ -9,4 +9,5 @@
 /.phpunit.cache
 /rector.php
 /rector-*.php
+!rector-migrate.php
 /CHANGE.md
