@@ -9,11 +9,10 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "psr/cache": "^1.0.1 || ^2.0 || ^3.0",
         "ray/di": "^2.13.2",
         "symfony/cache": "^6.0 || ^7.2",
-        "doctrine/annotations": "^1.13 || ^2.0",
         "psr/simple-cache": "^1.0 || ^2.0 || ^3.0",
         "ray/aop": "^2.10.4"
     },
@@ -66,8 +65,8 @@
             "@pcov",
             "@metrics"
         ],
-        "post-install-cmd": "@composer bin all install --ansi",
-        "post-update-cmd": "@composer bin all update --ansi"
+        "post-install-cmd": "@composer bin all install --ansi --ignore-platform-req=php",
+        "post-update-cmd": "@composer bin all update --ansi --ignore-platform-req=php"
     },
     "scripts-descriptions": {
         "test": "Run unit tests",

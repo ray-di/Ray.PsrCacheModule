@@ -20,8 +20,7 @@ use const PHP_SAPI;
  */
 final class LocalCacheProvider implements ProviderInterface
 {
-    /** @var string  */
-    private $cacheDir;
+    private readonly string $cacheDir;
 
     #[CacheDir('cacheDir')]
     #[CacheNamespace('namespace')]

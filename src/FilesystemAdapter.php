@@ -6,14 +6,13 @@ namespace Ray\PsrCacheModule;
 
 use Ray\PsrCacheModule\Annotation\CacheDir;
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
-use Serializable;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter as OriginAdapter;
 use Symfony\Component\Cache\Marshaller\MarshallerInterface;
 
 use function func_get_args;
 
 /** @psalm-suppress PropertyNotSetInConstructor */
-class FilesystemAdapter extends OriginAdapter implements Serializable
+class FilesystemAdapter extends OriginAdapter
 {
     use SerializableTrait;
 

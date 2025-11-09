@@ -8,14 +8,13 @@ use Ray\Di\Di\Named;
 use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
 use Redis;
-use Serializable;
 use Symfony\Component\Cache\Adapter\RedisAdapter as OriginAdapter;
 use Symfony\Component\Cache\Marshaller\MarshallerInterface;
 
 use function func_get_args;
 
 /** @psalm-suppress PropertyNotSetInConstructor */
-class RedisAdapter extends OriginAdapter implements Serializable
+class RedisAdapter extends OriginAdapter
 {
     use SerializableTrait;
 

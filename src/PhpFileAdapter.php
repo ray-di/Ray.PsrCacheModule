@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Ray\PsrCacheModule;
 
 use Ray\PsrCacheModule\Annotation\CacheNamespace;
-use Serializable;
 use Symfony\Component\Cache\Adapter\PhpFilesAdapter as OriginAdapter;
 
 use function func_get_args;
 
 /** @psalm-suppress PropertyNotSetInConstructor */
-class PhpFileAdapter extends OriginAdapter implements Serializable
+class PhpFileAdapter extends OriginAdapter
 {
     use SerializableTrait;
 

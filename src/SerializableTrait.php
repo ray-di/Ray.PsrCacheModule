@@ -8,8 +8,6 @@ use function call_user_func_array;
 
 trait SerializableTrait
 {
-    use Php73BcSerializableTrait;
-
     /** @var array<mixed> */
     private $args;
 
