@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.5.0] - 2025-11-09
+## [1.5.0] - 2025-11-10
 
 ### Changed
 
@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI/CD workflows updated to latest GitHub Actions versions
 - Replace deprecated `set-output` with `$GITHUB_OUTPUT`
 - Add `--ignore-platform-req=php` for PHP 8.5 compatibility testing
+- rector-migrate.php: Remove hardcoded paths to allow users to specify their own project paths
 
 ## [1.4.0] - Previous Release
 
