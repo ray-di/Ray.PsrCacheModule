@@ -17,10 +17,6 @@ use Rector\Php80\ValueObject\AnnotationToAttribute;
  *   vendor/bin/rector process src --config=vendor/ray/psr-cache-module/rector-migrate.php
  */
 return RectorConfig::configure()
-    ->withPaths([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-    ])
     ->withConfiguredRule(
         AnnotationToAttributeRector::class,
         [
