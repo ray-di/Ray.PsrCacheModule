@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-  bootstrap="tests/bootstrap.php">
-  <coverage cacheDirectory=".phpunit.cache/code-coverage"
-    processUncoveredFiles="true">
+  bootstrap="tests/bootstrap.php"
+  cacheDirectory=".phpunit.cache">
+  <source>
     <include>
       <directory suffix=".php">src</directory>
     </include>
+    <exclude>
+      <directory suffix=".php">src-deprecated</directory>
+    </exclude>
+  </source>
+  <coverage>
   </coverage>
   <testsuites>
     <testsuite name="Ray.PsrCacheModule test suite">
       <directory>tests</directory>
-      <directory phpVersion="7.4" phpVersionOperator=">=">tests-pecl-ext</directory>
-      <directory phpVersion="8.0.0" phpVersionOperator=">=">tests-php8</directory>
+      <directory>tests-pecl-ext</directory>
+      <directory>tests-php8</directory>
     </testsuite>
   </testsuites>
   <php>
