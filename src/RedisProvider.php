@@ -14,11 +14,7 @@ use function sprintf;
 /** @implements ProviderInterface<Redis> */
 class RedisProvider implements ProviderInterface
 {
-    /**
-     * @param list<string> $server
-     *
-     * @RedisConfig("server")
-     */
+    /** @param list<string> $server */
     #[RedisConfig('server')]
     public function __construct(private array $server)
     {
