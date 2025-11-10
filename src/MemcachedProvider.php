@@ -14,7 +14,6 @@ class MemcachedProvider implements ProviderInterface
     /**
      * @param array<array<string>> $servers
      *
-     * @MemcacheConfig("servers")
      * @see https://www.php.net/manual/en/memcached.addservers.php
      */
     #[MemcacheConfig('servers')]
