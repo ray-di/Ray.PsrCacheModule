@@ -22,10 +22,12 @@ final readonly class LocalCacheProvider implements ProviderInterface
 {
     private string $cacheDir;
 
-    #[CacheDir('cacheDir')]
-    #[CacheNamespace('namespace')]
-    public function __construct(string $cacheDir = '', private string $namespace = '')
-    {
+    public function __construct(
+        #[CacheDir]
+        string $cacheDir = '',
+        #[CacheNamespace]
+        private string $namespace = '',
+    ) {
         $this->cacheDir = $cacheDir ?: sys_get_temp_dir();
     }
 
