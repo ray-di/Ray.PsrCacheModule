@@ -8,7 +8,8 @@ use Attribute;
 use Ray\Di\Di\Qualifier;
 
 /**
- * Qualifies the cache shared among the web servers
+ * Qualifies the shared cache, whose scope is set by the installed module
+ * (Psr6RedisModule and Psr6MemcachedModule share it among the web servers)
  */
 #[Attribute(Attribute::TARGET_PARAMETER | Attribute::TARGET_METHOD)]
 #[Qualifier]
