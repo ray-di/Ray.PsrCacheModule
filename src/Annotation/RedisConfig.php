@@ -7,6 +7,9 @@ namespace Ray\PsrCacheModule\Annotation;
 use Attribute;
 use Ray\Di\Di\Qualifier;
 
+/**
+ * Qualifies the Redis server as a [host, port] pair
+ */
 #[Attribute]
 #[Qualifier]
 final class RedisConfig

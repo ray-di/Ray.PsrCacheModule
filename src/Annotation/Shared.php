@@ -7,6 +7,9 @@ namespace Ray\PsrCacheModule\Annotation;
 use Attribute;
 use Ray\Di\Di\Qualifier;
 
+/**
+ * Qualifies the cache shared among the web servers
+ */
 #[Attribute(Attribute::TARGET_PARAMETER | Attribute::TARGET_METHOD)]
 #[Qualifier]
 final class Shared
