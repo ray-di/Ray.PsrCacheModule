@@ -10,7 +10,6 @@ This package is the Ray.Di module that performs the [PSR-6](https://www.php-fig.
 You can use the PSR6 cache interface in two ways: `Local` and `Public`.
 `Local` is for caches that do not need to be shared among multiple web servers, and `Public` is for caches that need to be shared.
 
-**PHP8**
 ```php
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\PsrCacheModule\Annotation\Local;
@@ -22,32 +21,6 @@ class Foo
         #[Local] private CacheItemPoolInterface $localPool, 
         #[Shared] private CacheItemPoolInterface $sharedPool
     ){}
-}
-```
-
-**PHP7.4**
-
-```php
-use Psr\Cache\CacheItemPoolInterface;
-use Ray\PsrCacheModule\Annotation\Local;
-use Ray\PsrCacheModule\Annotation\Shared;
-
-class Foo
-{
-    private CacheItemPoolInterface $localPool;
-    private CacheItemPoolInterface $sharedPool;
-    
-    /**
-     * @Local('localPool') 
-     * @Shared('sharedPool') 
-     */
-    public function __construct(
-        CacheItemPoolInterface $localPool, 
-        CacheItemPoolInterface $sharedPool
-    ){
-        $this->localPool = $localPool;
-        $this->sharedPool = $sharedPool;
-    }
 }
 ```
 

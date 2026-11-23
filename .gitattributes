@@ -1,16 +1,22 @@
 # https://php.watch/articles/composer-gitattributes
 
 # Exclude build/test files from archive
-/tests            export-ignore
-/.gitattributes   export-ignore
-/.gitignore       export-ignore
-/.scrutinizer.yml export-ignore
-/.travis.yml      export-ignore
-/codecov.yml      export-ignore
-/phpcs.xml        export-ignore
-/phpmd.xml        export-ignore
-/phpstan.neon     export-ignore
-/phpunit.xml.dist export-ignore
+/.github                      export-ignore
+/tests                        export-ignore
+/tests-pecl-ext               export-ignore
+/tests-php8                   export-ignore
+/src-files                    export-ignore
+/vendor-bin                   export-ignore
+/.gitattributes               export-ignore
+/.gitignore                   export-ignore
+/CLAUDE.md                    export-ignore
+/codecov.yml                  export-ignore
+/composer-require-checker.json export-ignore
+/phpcs.xml                    export-ignore
+/phpmd.xml                    export-ignore
+/phpstan.neon                 export-ignore
+/phpunit.xml.dist             export-ignore
+/psalm.xml                    export-ignore
 
 # Configure diff output for .php and .phar files.
 *.php diff=php
