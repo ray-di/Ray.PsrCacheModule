@@ -39,7 +39,6 @@
         "files": ["src-files/apcu.php"]
     },
     "scripts": {
-        "setup": "php bin/setup.php",
         "test": "./vendor/bin/phpunit",
         "coverage": "php -dzend_extension=xdebug.so -dxdebug.mode=coverage ./vendor/bin/phpunit --coverage-text --coverage-html=build/coverage",
         "pcov": "php -dextension=pcov.so -d pcov.enabled=1 ./vendor/bin/phpunit --coverage-text --coverage-html=build/coverage  --coverage-clover=coverage.xml",
@@ -52,7 +51,8 @@
         ],
         "sa": [
             "./vendor/bin/phpstan analyse -c phpstan.neon",
-            "psalm --show-info=true"
+            "./vendor/bin/psalm --show-info=false",
+            "./vendor/bin/phpmd analyze src --format text --ruleset ./phpmd.xml"
         ],
         "tests": [
             "@cs",

@@ -9,7 +9,7 @@ use Ray\PsrCacheModule\Annotation\CacheNamespace;
 
 final class CacheNamespaceModule extends AbstractModule
 {
-    public function __construct(private readonly string $namespace, ?AbstractModule $module = null)
+    public function __construct(private readonly string $namespace, AbstractModule|null $module = null)
     {
         parent::__construct($module);
     }

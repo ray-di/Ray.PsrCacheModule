@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
+use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
 use Ray\Di\AbstractModule;
 use Ray\Di\Injector;
@@ -17,12 +18,12 @@ class FilesystemAdapterTest extends TestCase
     public function testSerialize(): string
     {
         $string = serialize(new FilesystemAdapter());
-        $this->assertIsString($string);
+        $this->assertStringContainsString(FilesystemAdapter::class, $string);
 
         return $string;
     }
 
-    /** @depends testSerialize */
+    #[Depends('testSerialize')]
     public function testUnserialize(string $string): void
     {
         $this->assertInstanceOf(FilesystemAdapter::class, unserialize($string));

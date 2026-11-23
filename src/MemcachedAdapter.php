@@ -9,12 +9,15 @@ use Symfony\Component\Cache\Marshaller\MarshallerInterface;
 
 use function func_get_args;
 
-/** @psalm-suppress PropertyNotSetInConstructor */
+/**
+ * @psalm-api
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class MemcachedAdapter extends OriginAdapter
 {
     use SerializableTrait;
 
-    public function __construct(MemcachedProvider $provider, string $namespace = '', int $defaultLifetime = 0, ?MarshallerInterface $marshaller = null)
+    public function __construct(MemcachedProvider $provider, string $namespace = '', int $defaultLifetime = 0, MarshallerInterface|null $marshaller = null)
     {
         $this->args = func_get_args();
 

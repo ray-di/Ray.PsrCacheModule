@@ -11,8 +11,6 @@
       <directory suffix=".php">src-deprecated</directory>
     </exclude>
   </source>
-  <coverage>
-  </coverage>
   <testsuites>
     <testsuite name="Ray.PsrCacheModule test suite">
       <directory>tests</directory>

@@ -11,7 +11,10 @@ use Redis;
 
 use function sprintf;
 
-/** @implements ProviderInterface<Redis> */
+/**
+ * @psalm-api
+ * @implements ProviderInterface<Redis>
+ */
 class RedisProvider implements ProviderInterface
 {
     /** @param list<string> $server */
@@ -21,7 +24,7 @@ class RedisProvider implements ProviderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function get(): Redis
     {

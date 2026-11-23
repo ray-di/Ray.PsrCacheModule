@@ -9,12 +9,15 @@ use Symfony\Component\Cache\Marshaller\MarshallerInterface;
 
 use function func_get_args;
 
-/** @psalm-suppress PropertyNotSetInConstructor */
+/**
+ * @psalm-api
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class ApcuAdapter extends OriginAdapter
 {
     use SerializableTrait;
 
-    public function __construct(string $namespace = '', int $defaultLifetime = 0, ?string $directory = null, ?MarshallerInterface $marshaller = null)
+    public function __construct(string $namespace = '', int $defaultLifetime = 0, string|null $directory = null, MarshallerInterface|null $marshaller = null)
     {
         $this->args = func_get_args();
 

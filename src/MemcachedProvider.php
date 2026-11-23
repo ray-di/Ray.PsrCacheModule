@@ -8,7 +8,10 @@ use Memcached;
 use Ray\Di\ProviderInterface;
 use Ray\PsrCacheModule\Annotation\MemcacheConfig;
 
-/** @implements ProviderInterface<Memcached> */
+/**
+ * @psalm-api
+ * @implements ProviderInterface<Memcached>
+ */
 class MemcachedProvider implements ProviderInterface
 {
     /**
@@ -21,12 +24,12 @@ class MemcachedProvider implements ProviderInterface
         /**
          * memcached server list
          */
-        private readonly array $servers
+        private readonly array $servers,
     ) {
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function get(): Memcached
     {

@@ -9,7 +9,10 @@ use Symfony\Component\Cache\Adapter\PhpFilesAdapter as OriginAdapter;
 
 use function func_get_args;
 
-/** @psalm-suppress PropertyNotSetInConstructor */
+/**
+ * @psalm-api
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class PhpFileAdapter extends OriginAdapter
 {
     use SerializableTrait;
@@ -18,8 +21,8 @@ class PhpFileAdapter extends OriginAdapter
         #[CacheNamespace]
         string $namespace = '',
         int $defaultLifetime = 0,
-        ?string $directory = null,
-        bool $appendOnly = false
+        string|null $directory = null,
+        bool $appendOnly = false,
     ) {
         $this->args = func_get_args();
 
