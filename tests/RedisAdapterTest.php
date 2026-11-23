@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ray\PsrCacheModule;
 
+use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
 use Ray\Di\AbstractModule;
 use Ray\Di\Injector;
@@ -25,16 +26,12 @@ class RedisAdapterTest extends TestCase
         $foo = $adapter->get('foo', static fn (ItemInterface $item) => '_no_serve_');
         $this->assertSame('foobar', $foo);
         $string = serialize($adapter);
-        $this->assertIsString($string);
 
         return [$string, $adapter];
     }
 
-    /**
-     * @param array{0:string, 1: RedisAdapter} $adapters
-     *
-     * @depends testSerialize
-     */
+    /** @param array{0:string, 1: RedisAdapter} $adapters */
+    #[Depends('testSerialize')]
     public function testUnserialize(array $adapters): void
     {
         $this->assertInstanceOf(RedisAdapter::class, $adapters[1]);

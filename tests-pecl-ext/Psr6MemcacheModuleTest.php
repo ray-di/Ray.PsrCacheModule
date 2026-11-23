@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BEAR\QueryRepository;
 
+use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemPoolInterface;
 use Ray\Di\Injector;
@@ -24,9 +25,7 @@ class Psr6MemcacheModuleTest extends TestCase
         return $cache;
     }
 
-    /**
-     * @depends testMemcCacheModule
-     */
+    #[Depends('testMemcCacheModule')]
     public function testSerializable(CacheItemPoolInterface $cache): void
     {
         try {
