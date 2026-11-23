@@ -6,6 +6,7 @@ namespace Ray\PsrCacheModule\Exception;
 
 use RuntimeException;
 
+/** @psalm-api */
 class RedisConnectionException extends RuntimeException
 {
 }

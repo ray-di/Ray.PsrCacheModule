@@ -21,7 +21,7 @@ final class Psr6MemcachedModule extends AbstractModule
     /** @var list<list<string>> */
     private $servers;
 
-    public function __construct(string $servers, ?AbstractModule $module = null)
+    public function __construct(string $servers, AbstractModule|null $module = null)
     {
         $this->servers = array_map(static fn ($serverString) => explode(':', $serverString), explode(',', $servers));
 

@@ -11,7 +11,10 @@ use Symfony\Component\Cache\Marshaller\MarshallerInterface;
 
 use function func_get_args;
 
-/** @psalm-suppress PropertyNotSetInConstructor */
+/**
+ * @psalm-api
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class FilesystemAdapter extends OriginAdapter
 {
     use SerializableTrait;
@@ -21,8 +24,8 @@ class FilesystemAdapter extends OriginAdapter
         string $namespace = '',
         int $defaultLifetime = 0,
         #[CacheDir]
-        ?string $directory = null,
-        ?MarshallerInterface $marshaller = null
+        string|null $directory = null,
+        MarshallerInterface|null $marshaller = null,
     ) {
         $this->args = func_get_args();
 

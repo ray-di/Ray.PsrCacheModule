@@ -23,7 +23,7 @@ final class Psr6RedisModule extends AbstractModule
     /** @var list<string> */
     private $server;
 
-    public function __construct(string $server, ?AbstractModule $module = null)
+    public function __construct(string $server, AbstractModule|null $module = null)
     {
         $this->server = explode(':', $server);
 
